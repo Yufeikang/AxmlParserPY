@@ -61,7 +61,7 @@ class StringBlock:
         if (size % 4) != 0:
             pass
 
-        for i in range(0, size / 4):
+        for i in range(0, int(size / 4)):
             self.m_strings.append(SV('=L', buff.read(4)))
 
         if self.stylesOffset.get_value() != 0:
@@ -71,7 +71,7 @@ class StringBlock:
             if (size % 4) != 0:
                 pass
 
-            for i in range(0, size / 4):
+            for i in range(0, int(size / 4)):
                 self.m_styles.append(SV('=L', buff.read(4)))
 
     def getRaw(self, idx):
@@ -97,7 +97,7 @@ class StringBlock:
         return data
 
     def getShort(self, array, offset):
-        value = array[offset / 4].get_value()
+        value = array[int(offset / 4)].get_value()
         if ((offset % 4) / 2) == 0:
             return value & 0xFFFF
         else:

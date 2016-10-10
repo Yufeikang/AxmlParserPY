@@ -89,7 +89,7 @@ class AXMLParser:
                 if chunkSize < 8 or chunkSize%4 != 0:
                     raise("ooo")
 
-                for i in range(0, chunkSize/4-2):
+                for i in range(0, int(chunkSize/4-2)):
                     self.m_resourceIDs.append(SV('<L', self.buff.read(4)))
 
                 continue

@@ -49,7 +49,7 @@ class AXMLPrinter:
                     self.buff += "xmlns:%s=\"%s\"\n" % (self.axml.getNamespacePrefix(0), self.axml.getNamespaceUri(0))
                     self.xmlns = True
 
-                for i in range(0, self.axml.getAttributeCount()):
+                for i in range(0, int(self.axml.getAttributeCount())):
                     self.buff += "%s%s=\"%s\"\n" % (self.getPrefix(self.axml.getAttributePrefix(i)), self.axml.getAttributeName(i), self.getAttributeValue(i))
 
                 self.buff += ">\n"

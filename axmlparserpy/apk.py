@@ -28,11 +28,6 @@ from xml.dom import minidom
 try:
     import chilkat
     ZIPMODULE = 0
-    # UNLOCK: change it with your valid key !
-    try:
-        CHILKAT_KEY = open("key.txt", "rb").read()
-    except Exception:
-        CHILKAT_KEY = "testme"
 except ImportError:
     ZIPMODULE = 1
 
@@ -61,7 +56,7 @@ class APK:
         if ZIPMODULE == 0:
             self.zip = ChilkatZip(self.__raw)
         else:
-            self.zip = zipfile.ZipFile(io.StringIO(self.__raw))
+            self.zip = zipfile.ZipFile(self.filename)
 
         # CHECK if there is only one embedded file
         #self._reload_apk()
@@ -252,7 +247,7 @@ class APK:
             Return permissions
         """
         return self.permissions
-    permissions = property(get_permissions)
+    #permissions = property(get_permissions)
 
     def get_min_sdk_version(self):
         """
