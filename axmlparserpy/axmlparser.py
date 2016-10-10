@@ -16,14 +16,14 @@
 # You should have received a copy of the GNU Lesser General Public License
 # along with Androguard.  If not, see <http://www.gnu.org/licenses/>.
 
-import bytecode
+from . import bytecode
 
-import stringblock
-import typeconstants as tc
-from stringblock import StringBlock
-from bytecode import SV
+from . import stringblock
+from . import typeconstants as tc
+from .stringblock import StringBlock
+from .bytecode import SV
 
-import StringIO
+import io
 from struct import pack, unpack
 from xml.dom import minidom
 
@@ -55,7 +55,7 @@ class AXMLParser:
         self.m_classAttribute = -1
         self.m_styleAttribute = -1
 
-    def next(self):
+    def __next__(self):
         self.doNext()
         return self.m_event
 
